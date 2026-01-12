@@ -219,16 +219,55 @@ body {
     background: var(--discord);
     color: var(--white);
     margin-left: 8px;
+    position: relative;
+    animation: discordPulse 1.5s ease-out infinite;
 }
 
 .nav-links a.nav-discord::before {
     display: none;
 }
 
+.nav-links a.nav-discord::after {
+    content: '';
+    position: absolute;
+    inset: -0px;
+    border-radius: 2px;
+    background: var(--discord);
+    z-index: -1;
+    opacity: 0;
+    animation: discordGlow 2s ease-in-out infinite;
+}
+
 .nav-links a.nav-discord:hover {
     background: #4752c4;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+    box-shadow: 0 4px 20px rgba(88, 101, 242, 0.8);
+    animation: none;
+}
+
+.nav-links a.nav-discord:hover::after {
+    animation: none;
+    opacity: 0;
+}
+
+@keyframes discordPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(88, 101, 242, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0);
+    }
+}
+
+@keyframes discordGlow {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .nav-discord-icon {
