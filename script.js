@@ -235,7 +235,7 @@ class CopyIP {
         this.btn = document.getElementById('copyIp');
         this.ipText = document.getElementById('ipText');
         this.toast = document.getElementById('toast');
-        this.ip = 'play.nexus.gg';
+        this.ip = 'play.nexushytale.com';
         
         if (this.btn) {
             this.btn.addEventListener('click', () => this.copy());
