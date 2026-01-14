@@ -1,6 +1,6 @@
 /**
  * NEXUS - Hytale Server Website
- * Interactive features and animations
+ * Interactive features and animations.
  */
 
 // ==========================================
