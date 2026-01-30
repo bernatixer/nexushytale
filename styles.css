@@ -277,6 +277,124 @@ body {
     vertical-align: middle;
 }
 
+/* Nav Shop Button - Magical Gold/Purple */
+.nav-links a.nav-shop {
+    background: linear-gradient(135deg, #d4a012, #ff8c00, #d4a012);
+    background-size: 200% auto;
+    color: var(--navy-darkest);
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+    animation: shopButtonShimmer 3s ease-in-out infinite, shopButtonPulse 2s ease-in-out infinite;
+}
+
+.nav-links a.nav-shop::before {
+    display: none;
+}
+
+.nav-links a.nav-shop::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--gold-light), var(--purple-base), var(--gold-light));
+    background-size: 200% auto;
+    z-index: -1;
+    animation: shopBorderRotate 3s linear infinite;
+}
+
+@keyframes shopButtonShimmer {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+@keyframes shopButtonPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 160, 18, 0.7), 0 4px 15px rgba(212, 160, 18, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(212, 160, 18, 0), 0 4px 25px rgba(212, 160, 18, 0.5);
+    }
+}
+
+@keyframes shopBorderRotate {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.nav-links a.nav-shop:hover {
+    background: linear-gradient(135deg, #ffcc00, #ffa500, #ffcc00);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(212, 160, 18, 0.6);
+    animation: none;
+}
+
+.nav-links a.nav-shop:hover::after {
+    animation: none;
+    opacity: 0;
+}
+
+.shop-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-shop-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Shop Button Sparkles */
+.shop-sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.shop-sparkle.sparkle-1 {
+    top: -2px;
+    right: -2px;
+    animation: sparkleFloat 2s ease-in-out infinite;
+}
+
+.shop-sparkle.sparkle-2 {
+    bottom: 0;
+    left: -3px;
+    animation: sparkleFloat 2.5s ease-in-out infinite 0.5s;
+}
+
+.shop-sparkle.sparkle-3 {
+    top: 50%;
+    right: -4px;
+    animation: sparkleFloat 1.8s ease-in-out infinite 1s;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) translate(-2px, -3px);
+    }
+}
+
 /* Mobile Menu */
 .mobile-menu-btn {
     display: none;
@@ -1180,6 +1298,741 @@ body {
     color: var(--gray-400);
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* ==========================================
+   Shop / Tienda Section
+   ========================================== */
+.shop-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--navy-darkest) 0%, var(--navy-dark) 50%, var(--navy-base) 100%);
+}
+
+.shop-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-base), var(--purple-base), var(--gold-base), transparent);
+}
+
+.shop-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--purple-base), var(--gold-base), var(--purple-base), transparent);
+}
+
+.shop-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.shop-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.shop-glow-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 160, 18, 0.15), transparent 60%);
+    top: -100px;
+    left: 20%;
+    animation: shopGlowFloat 8s ease-in-out infinite;
+}
+
+.shop-glow-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 60%);
+    bottom: -100px;
+    right: 15%;
+    animation: shopGlowFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes shopGlowFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -20px) scale(1.1);
+    }
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Shop Centerpiece - Floating Gem */
+.shop-centerpiece {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-orbit-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Orbit Rings */
+.shop-orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px dashed;
+    transform: translate(-50%, -50%);
+}
+
+.orbit-1 {
+    width: 200px;
+    height: 200px;
+    border-color: rgba(212, 160, 18, 0.2);
+    animation: orbitRotate 20s linear infinite;
+}
+
+.orbit-2 {
+    width: 280px;
+    height: 280px;
+    border-color: rgba(139, 92, 246, 0.15);
+    animation: orbitRotate 30s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 360px;
+    height: 360px;
+    border-color: rgba(63, 212, 217, 0.1);
+    animation: orbitRotate 40s linear infinite;
+}
+
+@keyframes orbitRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Orbiting Particles */
+.orbit-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/* Gold Coins */
+.orbit-particle.coin {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.coin-1 {
+    animation: orbitCoin1 8s linear infinite;
+}
+
+.coin-2 {
+    width: 16px;
+    height: 16px;
+    animation: orbitCoin2 12s linear infinite;
+}
+
+.coin-3 {
+    width: 14px;
+    height: 14px;
+    animation: orbitCoin3 10s linear infinite;
+}
+
+@keyframes orbitCoin1 {
+    0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes orbitCoin2 {
+    0% { transform: rotate(120deg) translateX(140px) rotate(-120deg); }
+    100% { transform: rotate(480deg) translateX(140px) rotate(-480deg); }
+}
+
+@keyframes orbitCoin3 {
+    0% { transform: rotate(240deg) translateX(180px) rotate(-240deg); }
+    100% { transform: rotate(600deg) translateX(180px) rotate(-600deg); }
+}
+
+/* Floating Gems */
+.orbit-particle.gem {
+    width: 12px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--purple-light), var(--purple-base));
+    clip-path: polygon(50% 0%, 100% 30%, 100% 70%, 50% 100%, 0% 70%, 0% 30%);
+    box-shadow: 0 0 15px var(--purple-glow);
+}
+
+.gem-1 {
+    animation: orbitGem1 15s linear infinite;
+}
+
+.gem-2 {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal-base));
+    box-shadow: 0 0 15px var(--teal-glow);
+    animation: orbitGem2 18s linear infinite;
+}
+
+@keyframes orbitGem1 {
+    0% { transform: rotate(60deg) translateX(120px) rotate(-60deg); }
+    100% { transform: rotate(420deg) translateX(120px) rotate(-420deg); }
+}
+
+@keyframes orbitGem2 {
+    0% { transform: rotate(180deg) translateX(160px) rotate(-180deg); }
+    100% { transform: rotate(540deg) translateX(160px) rotate(-540deg); }
+}
+
+/* Orbiting Runes */
+.orbit-particle.rune {
+    font-size: 18px;
+    color: var(--gold-light);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.rune-1 {
+    animation: orbitRune1 25s linear infinite;
+}
+
+.rune-2 {
+    color: var(--purple-light);
+    text-shadow: 0 0 10px var(--purple-glow);
+    animation: orbitRune2 20s linear infinite;
+}
+
+@keyframes orbitRune1 {
+    0% { transform: rotate(0deg) translateX(170px) rotate(0deg); opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { transform: rotate(360deg) translateX(170px) rotate(-360deg); opacity: 0.6; }
+}
+
+@keyframes orbitRune2 {
+    0% { transform: rotate(180deg) translateX(130px) rotate(-180deg); opacity: 0.5; }
+    50% { opacity: 0.9; }
+    100% { transform: rotate(540deg) translateX(130px) rotate(-540deg); opacity: 0.5; }
+}
+
+/* Sparkles */
+.orbit-particle.sparkle {
+    width: 6px;
+    height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--white), 0 0 20px var(--gold-light);
+}
+
+.sp-1 { animation: orbitSparkle 6s linear infinite; }
+.sp-2 { animation: orbitSparkle 7s linear infinite 1.5s; }
+.sp-3 { animation: orbitSparkle 5s linear infinite 3s; }
+.sp-4 { animation: orbitSparkle 8s linear infinite 0.5s; }
+
+@keyframes orbitSparkle {
+    0% {
+        transform: rotate(0deg) translateX(90px) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: rotate(360deg) translateX(90px) rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+/* Central Gem */
+.shop-gem-container {
+    position: relative;
+    z-index: 10;
+}
+
+.shop-gem-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(212, 160, 18, 0.4), rgba(255, 140, 0, 0.2), transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: gemGlow 3s ease-in-out infinite;
+}
+
+@keyframes gemGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+.shop-logo-gif {
+    width: 480px;
+    height: auto;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 50px rgba(212, 160, 18, 0.5)) drop-shadow(0 0 100px rgba(139, 92, 246, 0.3));
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Shop Text Content */
+.shop-text {
+    text-align: left;
+}
+
+.shop-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(212, 160, 18, 0.15), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(212, 160, 18, 0.3);
+    border-radius: 50px;
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+}
+
+.shop-badge-icon {
+    animation: badgeIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes badgeIconPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.shop-title {
+    font-family: 'Hebden Incised', var(--font-display);
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), #ff8c00, var(--gold-light), var(--purple-light));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: titleShimmer 4s ease-in-out infinite;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes titleShimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+}
+
+.shop-description {
+    font-size: 17px;
+    color: var(--gray-200);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 500px;
+}
+
+.shop-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.shop-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--gray-200);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+}
+
+.shop-feature:hover {
+    background: rgba(212, 160, 18, 0.1);
+    border-color: rgba(212, 160, 18, 0.3);
+    transform: translateY(-2px);
+}
+
+.feature-icon-small {
+    font-size: 18px;
+}
+
+/* Shop CTA Button */
+.btn-shop {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-shop-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #d4a012, #ff8c00, #d4a012, #8b5cf6);
+    background-size: 300% 300%;
+    animation: btnShopGradient 4s ease infinite;
+}
+
+@keyframes btnShopGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.btn-shop-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--navy-darkest);
+}
+
+.btn-shop-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: btnShine 3s ease-in-out infinite;
+}
+
+@keyframes btnShine {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+.btn-shop::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--gold-light), var(--purple-base), var(--gold-light));
+    background-size: 200% auto;
+    z-index: -1;
+    animation: btnBorderGlow 3s linear infinite;
+}
+
+@keyframes btnBorderGlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.btn-shop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 0 0 rgba(212, 160, 18, 0.7);
+    animation: btnPulseRing 2s ease-in-out infinite;
+}
+
+@keyframes btnPulseRing {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 160, 18, 0.7); }
+    50% { box-shadow: 0 0 0 15px rgba(212, 160, 18, 0); }
+}
+
+.btn-shop:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-shop:hover .btn-shop-bg {
+    animation: none;
+    background: linear-gradient(135deg, #ffcc00, #ffa500, #ffcc00);
+}
+
+.btn-shop:hover::after {
+    animation: none;
+}
+
+.btn-shop:hover .btn-shop-shine {
+    animation: btnShineHover 0.6s ease-out;
+}
+
+@keyframes btnShineHover {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Decorative Corner Elements */
+.shop-corner {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+}
+
+.shop-corner::before,
+.shop-corner::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(135deg, var(--gold-base), var(--purple-base));
+}
+
+.corner-tl {
+    top: 20px;
+    left: 20px;
+}
+
+.corner-tl::before {
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+}
+
+.corner-tl::after {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 40px;
+}
+
+.corner-tr {
+    top: 20px;
+    right: 20px;
+}
+
+.corner-tr::before {
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 2px;
+}
+
+.corner-tr::after {
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 40px;
+}
+
+.corner-bl {
+    bottom: 20px;
+    left: 20px;
+}
+
+.corner-bl::before {
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+}
+
+.corner-bl::after {
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 40px;
+}
+
+.corner-br {
+    bottom: 20px;
+    right: 20px;
+}
+
+.corner-br::before {
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 2px;
+}
+
+.corner-br::after {
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 40px;
+}
+
+/* Shop Section Responsive */
+@media (max-width: 1024px) {
+    .shop-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .shop-text {
+        text-align: center;
+        order: 2;
+    }
+
+    .shop-centerpiece {
+        order: 1;
+        max-width: 350px;
+        height: 350px;
+    }
+
+    .shop-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .shop-features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .shop-section {
+        padding: 80px 0;
+    }
+
+    .shop-centerpiece {
+        max-width: 280px;
+        height: 280px;
+    }
+
+    .orbit-1 { width: 140px; height: 140px; }
+    .orbit-2 { width: 200px; height: 200px; }
+    .orbit-3 { width: 260px; height: 260px; }
+
+    @keyframes orbitCoin1 {
+        0% { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+    }
+
+    @keyframes orbitCoin2 {
+        0% { transform: rotate(120deg) translateX(100px) rotate(-120deg); }
+        100% { transform: rotate(480deg) translateX(100px) rotate(-480deg); }
+    }
+
+    @keyframes orbitCoin3 {
+        0% { transform: rotate(240deg) translateX(130px) rotate(-240deg); }
+        100% { transform: rotate(600deg) translateX(130px) rotate(-600deg); }
+    }
+
+    @keyframes orbitGem1 {
+        0% { transform: rotate(60deg) translateX(85px) rotate(-60deg); }
+        100% { transform: rotate(420deg) translateX(85px) rotate(-420deg); }
+    }
+
+    @keyframes orbitGem2 {
+        0% { transform: rotate(180deg) translateX(115px) rotate(-180deg); }
+        100% { transform: rotate(540deg) translateX(115px) rotate(-540deg); }
+    }
+
+    @keyframes orbitRune1 {
+        0% { transform: rotate(0deg) translateX(120px) rotate(0deg); opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); opacity: 0.6; }
+    }
+
+    @keyframes orbitRune2 {
+        0% { transform: rotate(180deg) translateX(90px) rotate(-180deg); opacity: 0.5; }
+        50% { opacity: 0.9; }
+        100% { transform: rotate(540deg) translateX(90px) rotate(-540deg); opacity: 0.5; }
+    }
+
+    @keyframes orbitSparkle {
+        0% { transform: rotate(0deg) translateX(60px) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); opacity: 0; }
+    }
+
+    .shop-logo-gif {
+        width: 340px;
+    }
+
+    .shop-gem-glow {
+        width: 320px;
+        height: 320px;
+    }
+
+    .shop-corner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .shop-corner::before {
+        width: 25px;
+    }
+
+    .shop-corner::after {
+        height: 25px;
+    }
+
+    .shop-features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .shop-feature {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-centerpiece {
+        max-width: 220px;
+        height: 220px;
+    }
+
+    .orbit-particle.coin { width: 14px; height: 14px; }
+    .orbit-particle.gem { width: 10px; height: 14px; }
+    .orbit-particle.rune { font-size: 14px; }
+    .orbit-particle.sparkle { width: 4px; height: 4px; }
+
+    .shop-logo-gif {
+        width: 260px;
+    }
+
+    .shop-corner {
+        display: none;
+    }
 }
 
 /* ==========================================
@@ -2346,9 +3199,20 @@ body {
     
     .nav-links a.nav-discord {
         margin-left: 0;
-        margin-top: 16px;
+        margin-top: 8px;
         background: var(--discord);
         border-color: var(--discord);
+    }
+
+    .nav-links a.nav-shop {
+        margin-top: 8px;
+        background: linear-gradient(135deg, #d4a012, #ff8c00);
+        border-color: var(--gold-base);
+    }
+
+    .nav-links a.nav-shop:hover {
+        transform: none;
+        scale: 1;
     }
     
     .mobile-menu-btn {
